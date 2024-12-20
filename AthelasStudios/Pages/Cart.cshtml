@@ -1,0 +1,56 @@
+@page "/cart"
+@using Entities.Models
+@model AthelasStudios.Pages.CartModel
+
+<div>
+    <div class="text-center display-6">
+        Cart
+    </div>
+    <table >
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var line in Model.Cart?.Lines ?? Enumerable.Empty<CartLine>())
+            {
+                <tr>
+                    <td>@line.Game.GameName</td>
+                    <td>@line.Quantity</td>
+                    <td>@line.Game.GamePrice.ToString("c")</td>
+                    <td>@((line.Game.GamePrice*line.Quantity).ToString("c2"))</td>
+                    <td>
+                        <form method="post" asp-page-handler="Remove" >
+                            <input type="hidden" name="id" value="@line.Game.GameId">
+                            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash">Remove</i>
+                            </button>
+                        </form>
+
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-right">Total : </td>
+                <td class="text-right text-danger">
+                    @Model.Cart?.ComputeTotalValue().ToString("c2");
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="text-center my-3">
+        <div class="btn-group">
+            <a class="btn btn-primary" href="@Model?.ReturnUrl">Continue shopping</a>
+            <a class="btn btn-primary mx-2" asp-action="Checkout" asp-controller="Order">Checkout</a>
+        </div>
+    </div>
+</div>

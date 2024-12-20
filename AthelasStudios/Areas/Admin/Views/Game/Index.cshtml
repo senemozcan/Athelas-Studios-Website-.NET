@@ -1,0 +1,51 @@
+@model IEnumerable<Game>
+
+<div class="text-center">
+    <div class="display-6"> Games </div>
+
+    <div class="d-flex justify-content-end my-3">
+        <a class="btn btn-outline-success" asp-action="Create">
+            <i class="fa fa-plus"></i>
+            Create
+        </a>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image Url</th>
+                <th>Games Name</th>
+                <th>Price</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Game game in Model)
+            {
+                <tr>
+                    <td>@game.GameId</td>
+                    <td>
+                        <img class="border border-light rounded" src="@game.ImageUrl" alt="@game?.GameName" width="50" height="50s">
+                    </td>
+                    <td>@game.GameName</td>
+                    <td>@game.GamePrice.ToString("c")</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-warning" asp-action="Update" asp-route-id="@game.GameId">
+                                <i class="fa fa-edit"></i>
+                                Edit</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@game.GameId">
+                                <i class="fa fa-trash"></i>
+                                Delete</a>
+                            <a class="btn btn-info" target="_blank" asp-area="" asp-controller="Game" asp-action="Get"
+                                asp-route-id="@game.GameId">
+                                <i class="fa fa-search"></i>
+                                Web</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

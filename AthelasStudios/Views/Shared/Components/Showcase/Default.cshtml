@@ -1,0 +1,13 @@
+@model IEnumerable<Game>
+
+
+<div class=" display-6 text-center">
+    <h6 class="display-6">Showcace</h6>
+</div>
+
+<div class="row">
+    @foreach (var game in Model)
+    {
+        <partial name="_GameCard" model="game" />
+    }
+</div>

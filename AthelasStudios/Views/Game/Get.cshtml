@@ -1,0 +1,42 @@
+@model Game
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center">
+            <h6 class="display-6">
+                @Model.GameName
+            </h6>
+
+            <img class="img-fluid shadow rounded-3 p-5 my-3" src="@Model?.ImageUrl" alt="@Model.GameName" />
+            <p class="lead text-danger">@Model.GamePrice.ToString("c")</p>
+        </div>
+    </div>
+</div>
+
+<h3>@Model.GameName</h3>
+<p>@Model.GamePrice</p>
+
+<div class="text-center">
+    <div class="btn-group">
+        <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Index">
+            <i class="fa-solid fa-house"></i>
+            Home</a>
+        <form id="@Model.GameId" asp-page="/cart" method="post">
+            <input type="hidden" asp-for="GameId" />
+            <input type="hidden" name="returnUrl"  value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+            <button type="submit" class="btn btn-outline-secondary rounded-0">
+                <i class="fa fa-cart-plus"></i>
+                Add to cart
+            </button>
+        </form>
+        <a class="btn btn-outline-secondary" asp-controller="Game" asp-action="Index">
+            <i class="fa-solid fa-gamepad"></i>
+            Games</a>
+    </div>
+</div>
+
+@section Header {
+    <div>
+        Header for only get
+    </div>
+}
