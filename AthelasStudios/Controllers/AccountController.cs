@@ -2,6 +2,7 @@ using AthelasStudios.Models;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR.Protocol;
 
 namespace AthelasStudios.Controllers
 {
@@ -83,6 +84,11 @@ namespace AthelasStudios.Controllers
                     ModelState.AddModelError("", err.Description);
                 }
             }
+            return View();
+        }
+    
+        public IActionResult AccessDenied([FromQuery(Name = "ReturnUrl")] StreamInvocationMessage returnUrl)
+        {
             return View();
         }
     }

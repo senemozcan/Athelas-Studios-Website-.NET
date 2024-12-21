@@ -1,4 +1,5 @@
 using Entities.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Services.Contracts;
@@ -6,6 +7,7 @@ using Services.Contracts;
 namespace AthelasStudios.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class GameController : Controller
     {
         private readonly IServiceManager _manager;

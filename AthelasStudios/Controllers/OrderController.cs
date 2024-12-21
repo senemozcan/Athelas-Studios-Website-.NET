@@ -1,4 +1,5 @@
 using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
 
@@ -14,7 +15,7 @@ namespace AthelasStudios.Controllers
             _manager = manager;
             _cart = cart;
         }
-
+        [Authorize]
         public ViewResult Checkout() => View(new Order());
         [HttpPost]
         [ValidateAntiForgeryToken]
