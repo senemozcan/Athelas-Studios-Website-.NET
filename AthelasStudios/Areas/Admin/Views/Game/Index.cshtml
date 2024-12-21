@@ -1,4 +1,4 @@
-@model IEnumerable<Game>
+@model GameListViewModel
 
 <div class="text-center">
     <div class="display-6"> Games </div>
@@ -10,65 +10,70 @@
         </a>
     </div>
 
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Image Url</th>
-                <th>Games Name</th>
-                <th>Price</th>
-                <th>Operations</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Game game in Model)
-            {
-                <tr>
-                    <td>@game.GameId</td>
-                    <td>
-                        <img class="border border-light rounded" src="@game.ImageUrl" alt="@game?.GameName" width="50"
-                            height="50s">
-                    </td>
-                    <td>@game.GameName</td>
-                    <td>@game.GamePrice.ToString("c")</td>
-                    <td>
-                        <div class="btn-group">
-                            <a 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
-                                title="Edit"
-                                class="btn btn-warning" 
-                                asp-action="Update" 
-                                asp-route-id="@game.GameId">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
-                                title="Delete"
-                                class="btn btn-danger" 
-                                asp-action="Delete" 
-                                asp-route-id="@game.GameId">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                            <a 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
-                                title="Web
-                                class="btn btn-info" 
-                                target="_blank" 
-                                asp-area="" 
-                                asp-controller="Game" 
-                                asp-action="Get"
-                                asp-route-id="@game.GameId">
-                                <i class="fa fa-search"></i>
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row">
+
+        <div class="col-md-3">
+            @await Component.InvokeAsync("CategoriesMenu")
+            @await Component.InvokeAsync("ProductFilterMenu")
+            <div products="" number="3"></div>
+        </div>
+        <div class="col-md-9">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image Url</th>
+                        <th>Games Name</th>
+                        <th>ShowCase</th>
+                        <th>Price</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Game game in Model.Games)
+                    {
+                        <tr>
+                            <td>@game.GameId</td>
+                            <td>
+                                <img class="border border-light rounded" src="@game.ImageUrl" alt="@game?.GameName"
+                                    width="50" height="50s">
+                            </td>
+                            <td>@game.GameName</td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input type="checkbox" class="form-check-input" checked="@game.ShowCase" disabled />
+                                </div>
+                            </td>
+                            <td>@game.GamePrice.ToString("c")</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-warning"
+                                        asp-action="Update" asp-route-id="@game.GameId">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger"
+                                        asp-action="Delete" asp-route-id="@game.GameId">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" data-placement="top" title="Web
+                                        class=" btn btn-info" target="_blank" asp-area="" asp-controller="Game"
+                                        asp-action="Get" asp-route-id="@game.GameId">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="text-center">
+                <div page-model="@Model?.Pagination" page-action="Index" page-classes-enabled="true" page-class="btn"
+                    page-class-normal="btn-outline-dark" page-class-selected="btn-primary" class="btn-group">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts

@@ -13,10 +13,12 @@ namespace AthelasStudios.Components
             _manager = manager;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(string page = "default")
         {
             var games = _manager.GameService.GetShowcaseGames(false);
-            return View(games);
+            return page.Equals("default")
+                ? View(games)
+                : View("List" , games);
         }
 
     }

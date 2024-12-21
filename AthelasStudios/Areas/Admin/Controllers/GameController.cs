@@ -1,4 +1,6 @@
+using AthelasStudios.Models;
 using Entities.Dtos;
+using Entities.RequestParameters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -16,6 +18,25 @@ namespace AthelasStudios.Areas.Admin.Controllers
         {
             _manager = manager;
         }
+        public IActionResult Index([FromQuery] GameRequestParameters p)
+        {
+            ViewData["Title"] = "Games";
+
+            var games = _manager.GameService.GetAllGamesWithDetails(p);
+            var pagination = new Pagination()
+            {
+                CurrentPage = p.PageNumber,
+                ItemsPerPage = p.PageSize,
+                TotalItems = _manager.GameService.GetAllGames(false).Count()
+            };
+            return View(new GameListViewModel()
+            {
+                Games = games,
+                Pagination = pagination
+            });
+        }
+
+
 
         public IActionResult Create()
         {
