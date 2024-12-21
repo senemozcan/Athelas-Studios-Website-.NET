@@ -9,6 +9,7 @@ namespace AthelasStudios.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            TempData["info"] = "Welcome back";
             return View();
         }
     }

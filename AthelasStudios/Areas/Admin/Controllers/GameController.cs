@@ -60,6 +60,7 @@ namespace AthelasStudios.Areas.Admin.Controllers
                 }
                 gameDto.ImageUrl = String.Concat("/images/", file.FileName);
                 _manager.GameService.CreateGame(gameDto);
+                TempData["success"] = $"{gameDto.GameName} has been created";
                 return RedirectToAction("Index");
             }
             return View();
@@ -104,6 +105,7 @@ namespace AthelasStudios.Areas.Admin.Controllers
         public IActionResult Delete([FromRoute(Name = "id")] int id)
         {
             _manager.GameService.DeleteOneProduct(id);
+            TempData["danger"] = "The game has been removed.";
             return RedirectToAction("Index");
         }
     }
