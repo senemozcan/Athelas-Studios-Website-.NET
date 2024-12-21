@@ -36,6 +36,7 @@ namespace AthelasStudios.Controllers{
         {   
             //Game game = _context.Games.First(g => g.GameId.Equals(id));
             var model = _manager.GameService.GetOneGame(id, false);
+            ViewData["Title"] = model?.GameName;
             return View(model);
         }
 

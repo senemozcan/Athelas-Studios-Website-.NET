@@ -6,6 +6,7 @@ namespace AthelasStudios.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Title"] = "Welcome";
             return View();
         }
     }

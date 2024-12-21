@@ -4,6 +4,7 @@ using Entities.RequestParameters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Services.Contracts;
 
 namespace AthelasStudios.Areas.Admin.Controllers
@@ -77,6 +78,7 @@ namespace AthelasStudios.Areas.Admin.Controllers
         {
             ViewBag.Categories = GetCategoriesSelectList();
             var model = _manager.GameService.GetOneGameForUpdate(id, false);
+            ViewData["Title"] = model?.GameName;
             return View(model);
         }
 
