@@ -26,22 +26,43 @@
                 <tr>
                     <td>@game.GameId</td>
                     <td>
-                        <img class="border border-light rounded" src="@game.ImageUrl" alt="@game?.GameName" width="50" height="50s">
+                        <img class="border border-light rounded" src="@game.ImageUrl" alt="@game?.GameName" width="50"
+                            height="50s">
                     </td>
                     <td>@game.GameName</td>
                     <td>@game.GamePrice.ToString("c")</td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-warning" asp-action="Update" asp-route-id="@game.GameId">
+                            <a 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title="Edit"
+                                class="btn btn-warning" 
+                                asp-action="Update" 
+                                asp-route-id="@game.GameId">
                                 <i class="fa fa-edit"></i>
-                                Edit</a>
-                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@game.GameId">
+                            </a>
+                            <a 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title="Delete"
+                                class="btn btn-danger" 
+                                asp-action="Delete" 
+                                asp-route-id="@game.GameId">
                                 <i class="fa fa-trash"></i>
-                                Delete</a>
-                            <a class="btn btn-info" target="_blank" asp-area="" asp-controller="Game" asp-action="Get"
+                            </a>
+                            <a 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title="Web
+                                class="btn btn-info" 
+                                target="_blank" 
+                                asp-area="" 
+                                asp-controller="Game" 
+                                asp-action="Get"
                                 asp-route-id="@game.GameId">
                                 <i class="fa fa-search"></i>
-                                Web</a>
+                            </a>
                         </div>
                     </td>
                 </tr>
@@ -49,3 +70,12 @@
         </tbody>
     </table>
 </div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+}
