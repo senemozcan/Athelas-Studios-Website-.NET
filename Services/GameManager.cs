@@ -77,11 +77,11 @@ namespace Services
 
         public void UpdateOneGame(GameDtoForUpdate gameDto)
         {
-            var entity = _manager.Game.GetOneGame(gameDto.GameId, true);
-            // entity.GameName = gameDto.GameName;
-            // entity.GamePrice = gameDto.GamePrice;
-            // entity.CategoryId = gameDto.CategoryId;
-            entity = _mapper.Map<Game>(gameDto);
+           // var entity = _manager.Game.GetOneGame(gameDto.GameId, true);
+        //     entity.GameName = gameDto.GameName;
+        //     entity.GamePrice = gameDto.GamePrice;
+        //     entity.CategoryId = gameDto.CategoryId;
+             var entity = _mapper.Map<Game>(gameDto);
             _manager.Game.UpdateOneGame(entity);
             _manager.Save();
         }

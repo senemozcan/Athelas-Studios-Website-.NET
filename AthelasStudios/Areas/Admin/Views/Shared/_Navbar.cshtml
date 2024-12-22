@@ -1,6 +1,6 @@
-<nav class="navbar bg-dark border-bottom navbar-expand-lg bg-body-tertiary">
+<nav class="navbar bg-dark border-bottom navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand text-white" href="/">ADMIN</a>
+        <a class="navbar-brand text-white" href="/">Showcase</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,28 +15,28 @@
                     <a class="nav-link text-white" aria-current="page" asp-controller="Game" asp-action="Index">Games
                         (@await Component.InvokeAsync("GameSummary"))</a>
                 </li>
-                <li class="nav-item">
+                @* <li class="nav-item">
                     <a class="nav-link text-white" aria-current="page" asp-controller="Category"
                         asp-action="Index">Categories</a>
-                </li>
-                <li class="nav-item">
+                </li> *@
+                @* <li class="nav-item">
                     <a class="nav-link text-white" aria-current="page" asp-controller="Order"
                         asp-action="Index">Orders</a>
-                </li>
-                <li class="nav-item">
+                </li> *@
+                @* <li class="nav-item">
                     <a class="nav-link text-white" aria-current="page" asp-controller="Role"
-                        asp-action="Index">Orders</a>
-                </li>
-                <li class="nav-item">
+                        asp-action="Index">Roles</a>
+                </li> *@
+                @* <li class="nav-item">
                     <a class="nav-link text-white" aria-current="page" asp-controller="User"
                         asp-action="Index">Users</a>
-                </li>
+                </li> *@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a target="_blank" class="nav-link text-white" aria-current="page" asp-area=""
                         asp-controller="Home" asp-action="Index">
-                        <i class="fa fa-solid fa-seach"></i>
+                        <i class="fa-brands fa-webflow"></i>
                         Web</a>
                 </li>
                 <li class="nav-item">

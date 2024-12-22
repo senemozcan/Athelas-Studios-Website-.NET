@@ -116,7 +116,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 1,
                             GameName = "Dead Colors",
                             GamePrice = 250m,
-                            ImageUrl = "/images/2.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = false,
                             Summary = ""
                         },
@@ -126,7 +126,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 2,
                             GameName = "Serenity",
                             GamePrice = 1000m,
-                            ImageUrl = "/images/3.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = false,
                             Summary = ""
                         },
@@ -136,7 +136,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 2,
                             GameName = "The Chandrians",
                             GamePrice = 1500m,
-                            ImageUrl = "/images/4.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = true,
                             Summary = ""
                         },
@@ -146,7 +146,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 2,
                             GameName = "Dune: The Buthlerian Jihad",
                             GamePrice = 1150m,
-                            ImageUrl = "/images/5.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = false,
                             Summary = ""
                         },
@@ -156,7 +156,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 2,
                             GameName = "Dune: 1",
                             GamePrice = 1150m,
-                            ImageUrl = "/images/6.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = false,
                             Summary = ""
                         },
@@ -166,7 +166,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 1,
                             GameName = "Dune: 2",
                             GamePrice = 1150m,
-                            ImageUrl = "/images/7.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = true,
                             Summary = ""
                         },
@@ -176,7 +176,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 1,
                             GameName = "Dune: 3",
                             GamePrice = 1150m,
-                            ImageUrl = "/images/8.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = true,
                             Summary = ""
                         },
@@ -186,7 +186,7 @@ namespace AthelasStudios.Migrations
                             CategoryId = 2,
                             GameName = "Dune: 4",
                             GamePrice = 1150m,
-                            ImageUrl = "/images/9.jpg",
+                            ImageUrl = "/images/1.jpg",
                             ShowCase = false,
                             Summary = ""
                         });

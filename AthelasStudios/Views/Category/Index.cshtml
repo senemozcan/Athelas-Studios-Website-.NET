@@ -11,7 +11,7 @@
         @foreach (var cat in Model)
         {
             <li class="list-group-item">
-                <a asp-action="Index" asp-route-categoryId="@cat.CategoryId">
+                <a asp-controller="Game" asp-route-categoryId="@cat.CategoryId">
                     @cat.CategoryName
                 </a>
             </li>

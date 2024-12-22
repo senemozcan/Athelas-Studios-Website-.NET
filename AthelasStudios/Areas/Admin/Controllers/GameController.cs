@@ -3,6 +3,7 @@ using Entities.Dtos;
 using Entities.RequestParameters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Services.Contracts;
@@ -86,8 +87,10 @@ namespace AthelasStudios.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async  Task<IActionResult> Update([FromForm] GameDtoForUpdate gameDto,  IFormFile file)
         {
+            Console.WriteLine("update");
             if (ModelState.IsValid)
             {
+                Console.WriteLine("update valid");
                 //file operation
                 string path = Path.Combine(Directory.GetCurrentDirectory(),
                 "wwwroot", "images", file.FileName);
@@ -99,6 +102,12 @@ namespace AthelasStudios.Areas.Admin.Controllers
                 gameDto.ImageUrl = String.Concat("/images/", file.FileName);
                 _manager.GameService.UpdateOneGame(gameDto);
                 return RedirectToAction("Index");
+            }
+            Console.WriteLine("update invalid");
+            foreach (var modelState in ViewData.ModelState.Values) {
+                foreach (ModelError error in modelState.Errors) {
+                    Console.WriteLine(error.ErrorMessage);
+                }
             }
             return View();
         }
